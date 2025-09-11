@@ -1,0 +1,78 @@
+#couponContainer{
+ display: flex;          
+  flex-direction: row;    
+  align-items: center;   
+  justify-content: space-between;
+  border: 2px solid rgb(41, 84, 255,0.7);
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 10px;
+}
+#couponDesc{
+    color: rgb(107, 107, 107);
+    font-size: small;
+}
+#couponName{
+    font-weight: bold;
+    font-size: large;
+}
+#showCoupons{
+    display: flex;
+    align-items: center;
+    /* flex-direction: row; */
+    justify-content: space-between;
+    border-width: 2px;
+    }
+
+#couponText{
+
+}
+#codeText{
+    color: green;
+}
+#couponTextContainer{
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: center;
+}
+#mainOrderSummary{
+
+width: 400px;
+}
+#RemoveCoupon{
+   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 2px solid rgba(41, 84, 255, 0.5); */
+  border-radius: 10px;
+}
+.ApplyBtn{
+    width: 100%;
+    border-width: 2px;
+    display: flex;
+    align-items: center;
+    /* flex-direction: row; */
+    justify-content: space-between;
+    border-width: 2px;
+}
+.couponRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  padding: 6px 0;
+  cursor: pointer;
+
+  border-radius: 6px;
+}
+
+.couponText {
+  color: #333;
+}
+
+.couponApplyBtn {
+  font-weight: bold;
+  color: rgb(41, 84, 255);
+}

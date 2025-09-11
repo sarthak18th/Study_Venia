@@ -1,0 +1,33 @@
+{
+  "name": "pincode-layout",
+  "version": "1.0.0",
+  "description": "Adds a pincode functionality to PDP",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "intercept.js",
+    "components",
+    "talons"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "magento",
+    "pwa-studio",
+    "venia",
+    "intercept",
+    "pincode"
+  ],
+  "author": "sarthak18th <sarthakbansal@18thdigitech.net>",
+  "license": "ISC",
+  "pwa-studio": {
+    "targets": {
+      "intercept": "intercept.js"
+    }
+  },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
+  }
+}
