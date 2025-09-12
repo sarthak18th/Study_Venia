@@ -85,8 +85,10 @@ export const usePriceSummary = (props = {}) => {
         isCheckout,
         isLoading: !!loading,
         flatData: flattenData(data),
+
         cartId:cartId,
         couponAlreadyApplied:true?flattenData(data).discounts?.length==1:false
+        
     };
 };
 

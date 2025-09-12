@@ -42,9 +42,14 @@ const PriceSummary = props => {
         isCheckout,
         isLoading,
         flatData,
+
         cartId,
         couponAlreadyApplied
+
     } = talonProps;
+
+console.log('hasItems',hasItems)
+
     const { formatMessage } = useIntl();
 console.log('ahhah',talonProps)
     if (hasError) {
@@ -140,6 +145,7 @@ console.log('ahhah',talonProps)
                         data={discounts}
                     />
                     <li className={classes.lineItems}>
+
                         <Cupons cartId={cartId} couponAlreadyApplied={couponAlreadyApplied} couponCode={couponAlreadyApplied?flatData?.discounts[0]?.label:''}></Cupons>
                     </li>
                     <li className={classes.lineItems}>
