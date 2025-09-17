@@ -1,0 +1,22 @@
+/* Override Venia's Dialog default */
+.customDialog {
+  max-width: 100vw !important;  /* take 90% of viewport width */
+  width: 90vw !important;
+  height: 90vh !important;     /* optional */
+}
+
+.dialog-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.currentImage{
+ /* max-height: 200vh; */
+ /* object-fit: contain; */
+}
+.hiddenZoomImg img {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}

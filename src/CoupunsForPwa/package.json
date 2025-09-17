@@ -1,16 +1,15 @@
 {
   "name": "apply-coupun-pwa",
   "version": "1.0.0",
-  "description": "Adds a pincode functionality to PDP",
+  "description": "Adds a coupon functionality to order summary",
   "main": "src/index.js",
   "files": [
-    "dist",
-    "intercept.js"
+    
+    "intercept.js",
+    "src"
   ],
   "scripts": {
-    "build": "babel src --out-dir dist --extensions \".js,.jsx\" && cp -r src/**/*.css dist/components",
-    "prepublishOnly": "npm run build",
-    "babel-version": "babel --version"
+     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "magento",
@@ -29,11 +28,6 @@
   "peerDependencies": {
     "react": ">=17",
     "react-dom": ">=17"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.25.0",
-    "@babel/core": "^7.25.0",
-    "@babel/preset-env": "^7.25.0",
-    "@babel/preset-react": "^7.25.0"
   }
+ 
 }

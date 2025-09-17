@@ -1,0 +1,38 @@
+{
+  "name": "image_zoom_function",
+  "version": "1.0.2",
+  "description": "Adds a pincode functionality to PDP",
+  "main": "intercept.js",
+  "files": [
+    "src",
+    "intercept.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "magento",
+    "pwa-studio",
+    "venia",
+    "intercept",
+    "pincode"
+  ],
+  "author": "sarthak18th <sarthakbansal@18thdigitech.net>",
+  "license": "ISC",
+  "pwa-studio": {
+    "targets": {
+      "intercept": "intercept.js"
+    }
+  },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.0",
+    "@babel/core": "^7.25.0",
+    "@babel/preset-env": "^7.25.0",
+    "@babel/preset-react": "^7.25.0",
+    "react-zoom-pan-pinch": "^3.7.0"
+  }
+}

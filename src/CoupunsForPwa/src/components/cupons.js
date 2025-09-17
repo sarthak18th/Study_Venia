@@ -69,11 +69,9 @@ function Cupons({ cartId, couponAlreadyApplied, couponCode }) {
         </div>
       ) :
         <div className="couponRow" onClick={() => setIsOpen(true)}>
-          <span className="couponText">Enter Offer Code</span>
-          <span className="couponApplyBtn">Apply</span>
+          <text className="couponText">Enter Offer Code</text>
+          <text className="couponApplyBtn">Apply</text>
         </div>
-
-
       }
 
       <Dialog
@@ -81,18 +79,19 @@ function Cupons({ cartId, couponAlreadyApplied, couponCode }) {
         onCancel={() => setIsOpen(false)}
         onConfirm={applyCoupon}
         shouldShowButtons={false}
+        classes="Dialog"
+        title="Apply Coupon"
       >
         <div>
           <ul>
-            {cuponsData.map(item => (
+            {cuponsData.map((item, index) => (
               <Fragment key={item.coupon_code}>
-                <div id='couponContainer'>
-                  <div >
-
-                    <li id='couponName'>{item.coupon_name}</li>
-                    <li id='couponDesc'>{item.description}</li>
+                <div key={index} className={`couponContainer color-${index % 2}`}>
+                  <div>
+                    <li id="couponName">{item.coupon_name}</li>
+                    <li id="couponDesc">{item.description}</li>
                   </div>
-                  <Button onClick={() => applyCoupon(item.coupon_code)}>
+                  <Button priority='high' classes={{ root_highPriority: 'applyBtn' }}  onClick={() => applyCoupon(item.coupon_code)}>
                     {item.coupon_code}
                   </Button>
                 </div>

@@ -30,8 +30,14 @@
   "dependencies": {
     "@magento/experience-platform-connector": "~1.0.10",
     "@magento/pwa-buildpack": "~11.5.3",
+    "apply-coupun-pwa": "file:src/CoupunsForPwa",
     "dompurify": "~3.2.4",
-    "pincode-layout": "^1.0.2"
+    "image_zoom_function": "file:src/Image_zoom_function",
+    "pincode-layout": "^1.0.2",
+    "react-image-magnifiers": "^1.4.0",
+    "react-image-magnify": "^2.7.4",
+    "react-image-zoom": "^1.3.1",
+    "react-zoom-pan-pinch": "^3.7.0"
   },
   "devDependencies": {
     "@adobe/apollo-link-mutation-queue": "~1.0.2",
@@ -146,7 +152,9 @@
     },
     "trusted-vendors": [
       "@magento",
-      "pincode-layout"
+      "pincode-layout",
+      "apply-coupun-pwa",
+      "image_zoom_function"
     ]
   }
 }
