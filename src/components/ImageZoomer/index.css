@@ -1,22 +1,36 @@
-/* Override Venia's Dialog default */
-.customDialog {
-  max-width: 100vw !important;  /* take 90% of viewport width */
-  width: 90vw !important;
-  height: 90vh !important;     /* optional */
+.thumbnailList {
+  display: flex;
+  flex-direction: row;   /* force row */
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;           /* spacing between thumbs */
+  margin-top: 0.5rem;
+}
+.thumbnailList > * {
+  flex: auto;   /* don’t shrink or stretch */
 }
 
-.dialog-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
+
+@media (min-width: 1024px) {
+  .thumbnailList {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 }
-.currentImage{
- /* max-height: 200vh; */
- /* object-fit: contain; */
+
+.root {
+  display: grid;                            /* grid */
+  grid-template-columns: auto;              /* grid-cols-auto */
+  grid-template-rows: auto;                 /* grid-rows-auto */
+  grid-template-areas:
+    "main"
+    "thumbs";
 }
-.hiddenZoomImg img {
-  opacity: 0;
-  position: absolute;
-  pointer-events: none;
+
+@media (min-width: 1024px) {
+  .root {
+    gap: 0.5rem; /* lg_gap-sm ≈ 8px */
+  }
 }
+

@@ -12,8 +12,11 @@ module.exports = {
         'src/perigrine/CheckoutPage/useCheckoutPage.js',
     [`@magento/venia-ui/lib/components/CheckoutPage/checkoutPage.js`]:
     'src/components/CheckoutPage/checkoutPage.js',
-    // [`@magento/venia-ui/lib/components/ProductImageCarousel/carousel.js`]:
-    // 'src/components/ImageZoomer/carousel.js'
-
+    [`@magento/venia-ui/lib/components/ProductImageCarousel/carousel.js`]:
+    'src/components/ImageZoomer/carousel.js',
+    [`@magento/venia-ui/lib/components/Gallery/item.js`]:
+    'src/components/QuickView/item.js',
+    // [`@magento/venia-ui/lib/components/ProductFullDetail/productFullDetail.js`]:"src/CoupunsForPwa/ProductFullDetail/productFullDetail.js",
+// [`@magento/venia-ui/lib/components/Dialog/dialog.js`]:'src/components/QuickView/dialog.js'
 
 };

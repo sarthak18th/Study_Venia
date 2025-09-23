@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { useIntl } from 'react-intl';
 import {
@@ -16,7 +16,9 @@ import Image from '@magento/venia-ui/lib/components/Image/index';
 import defaultClasses from '@magento/venia-ui/lib/components/ProductImageCarousel/carousel.module.css';
 import Thumbnail from '@magento/venia-ui/lib/components/ProductImageCarousel/thumbnail';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-
+import ReactImageZoom from "react-image-zoom";
+import Dialog from '@magento/venia-ui/lib/components/Dialog';
+import "./index.css"
 
 const IMAGE_WIDTH = 640;
 
@@ -51,10 +53,54 @@ const ProductImageCarousel = props => {
         sortedImages
     } = talonProps;
 
+
+
+    const [isOpen, setIsOpen] = useState(false)
     // create thumbnail image component for every images in sorted order
+    const propsForZoom = {
+        img: `https://mcstaging.heydude.in/media/catalog/product${currentImage.file}`,
+        // width: 400,       // source image width
+        // zoomWidth: 200,   // zoom window width
+        // height: 400,        // make source square if possible
+
+        scale: 0.5,
+        offset: { horizontal: 20, vertical: 0 },
+        zoomPosition: "right",
+        zoomStyle: `
+            position: absolute; 
+            width: 400px; 
+            height: 500px; 
+            z-index: 1; 
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+
+        `,
+        zoomLensStyle: `
+            background-color: rgba(0,0,0,0.2);
+            border: 1px solid #999;
+            border-radius: 4px;
+            width: 150px !important;
+            height: 150px !important;
+        `
+    };
+    const classes = useStyle(defaultClasses, props.classes);
+    const previousButton = formatMessage({
+        id: 'productImageCarousel.previousButtonAriaLabel',
+        defaultMessage: 'Previous Image'
+    });
+
+    const nextButton = formatMessage({
+        id: 'productImageCarousel.nextButtonAriaLabel',
+        defaultMessage: 'Next Image'
+    });
+
+    const chevronClasses = { root: classes.chevron };
+
     const thumbnails = useMemo(
         () =>
             sortedImages.map((item, index) => (
+
                 <Thumbnail
                     key={item.uid}
                     item={item}
@@ -65,37 +111,74 @@ const ProductImageCarousel = props => {
             )),
         [activeItemIndex, handleThumbnailClick, sortedImages]
     );
-    
-    const classes = useStyle(defaultClasses, props.classes);
+
 
     let image;
     if (currentImage.file) {
         image = (
 
-            // <div style={{
-            //     maxWidth: '100%', width: '450px',
-            //     height: 'auto', justifyContent: 'center', alignItems: 'center'
-            // }}>
 
-            //     <ReactImageZoom {...propsForZoom} />
-            // </div>
-            <div style={{ display: "flex", gap: "20px" }}>
-                {/* Main image with Pan & Pinch */}
-                <div style={{ width: "450px" }}>
-                    <TransformWrapper>
-                        <TransformComponent>
-                            <Image
-                                alt={altText}
-                                // classes={{
-                                //     image: classes.currentImage,
-                                //     root: classes.imageContainer
-                                // }}
-                                resource={currentImage.file}
-                                width={IMAGE_WIDTH}
-                            />
-                        </TransformComponent>
-                    </TransformWrapper>
+            <div className={classes.imageContainer}>
+
+                <div onClick={() => {
+                    console.log('hello')
+                    setIsOpen(true)
+                }}>
+                    <ReactImageZoom {...propsForZoom} />
                 </div>
+
+                <Dialog isOpen={isOpen} onCancel={() => setIsOpen(false)} shouldShowButtons={false} title="Double Click for Zoom">
+
+
+
+
+                    <div  className='root'>
+                        <div className={classes.carouselContainer}>
+                            <AriaButton
+                                className={classes.previousButton}
+                                onPress={handlePrevious}
+                                aria-label={previousButton}
+                                type="button"
+                            >
+                                <Icon
+                                    classes={chevronClasses}
+                                    src={ChevronLeftIcon}
+                                    size={40}
+                                />
+                            </AriaButton>
+                            <div className={classes.imageContainer}>
+
+                                <TransformWrapper>
+                                    <TransformComponent>
+                                        <Image
+                                            alt={altText}
+                                            //  classes={{
+                                            //     image: classes.currentImage,
+                                            //     root: classes.imageContainer
+                                            //  }}
+                                            resource={currentImage.file}
+                                            width={IMAGE_WIDTH}
+                                        />
+                                    </TransformComponent>
+                                </TransformWrapper>
+                            </div>
+                            {/* <ImageZoom uri={currentImage.file}></ImageZoom> */}
+                            <AriaButton
+                                className={classes.nextButton}
+                                onPress={handleNext}
+                                aria-label={nextButton}
+                                type="button"
+                            >
+                                <Icon
+                                    classes={chevronClasses}
+                                    src={ChevronRightIcon}
+                                    size={40}
+                                />
+                            </AriaButton>
+                        </div>
+                        <div className='thumbnailList'>{thumbnails}</div>
+                    </div>
+                </Dialog>
             </div>
 
         );
@@ -111,18 +194,6 @@ const ProductImageCarousel = props => {
             />
         );
     }
-
-    const previousButton = formatMessage({
-        id: 'productImageCarousel.previousButtonAriaLabel',
-        defaultMessage: 'Previous Image'
-    });
-
-    const nextButton = formatMessage({
-        id: 'productImageCarousel.nextButtonAriaLabel',
-        defaultMessage: 'Next Image'
-    });
-
-    const chevronClasses = { root: classes.chevron };
     return (
         <div className={classes.root}>
             <div className={classes.carouselContainer}>
